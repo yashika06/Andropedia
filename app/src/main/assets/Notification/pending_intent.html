@@ -1,0 +1,58 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Pending Intent</h2>
+    <div class="paragraph">
+        <p>
+        A PendingIntent is an object that wraps up an intent object and it specifies an action to be taken place in future.
+        In other words, it lets us pass a future Intent to another application and allow that application to execute that Intent
+        as if it had the same permissions as our application, whether or not our application is still around when the Intent is eventually invoked.</p>
+        <p>PendingIntent uses the following methods to handle the different types of intents:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>PendingIntent.getActivity() : Retrieve a PendingIntent to start an Activity</li>
+            <li>PendingIntent.getBroadcast() : Retrieve a PendingIntent to perform a Broadcast</li>
+            <li>PendingIntent.getService() : Retrieve a PendingIntent to start a Service</li>
+        </ul>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Intent intent = new Intent(this, SomeActivity.class);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        try {
+                            pendingIntent.send();
+                        } catch (PendingIntent.CanceledException e) {
+                            e.printStackTrace();
+                        }
+        </pre>
+    </div>
+    <div class="ulist">
+        The parameters inside the getActivity() method and there usages are described below :
+
+        this (context) : This is the context in which the PendingIntent starts the activity
+        requestCode :
+        intent : Explicit intent object of the activity to be launched
+        flag : One of the PendingIntent flag that we’ve used in the above example is FLAG_UPDATE_CURRENT. This one states that if a previous PendingIntent already exists, then the current one will update it with the latest intent. There are many other flags like FLAG_CANCEL_CURRENT etc.
+        <ul>
+            <li>
+                <b>this (context): </b> This is the context in which the PendingIntent starts the activity.
+            </li>
+            <li>
+                <b>requestCode:</b> “1” is the private request code for the sender used in the above example.
+                Using it later with the same method again will get back the same pending intent.
+                Then we can do various things like cancelling the pending intent with cancel(), etc.
+            </li>
+            <li>
+                <b>intent: </b>  Explicit intent object of the activity to be launched
+            </li>
+            <li>
+                <b>flag: </b> One of the PendingIntent flag that we’ve used in the above example is FLAG_UPDATE_CURRENT.
+                This one states that if a previous PendingIntent already exists, then the current one will update it with the latest intent.
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

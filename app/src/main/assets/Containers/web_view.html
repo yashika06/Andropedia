@@ -1,0 +1,65 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">WebView</h2>
+    <div class="paragraph">
+        <p>Android WebView is an embedded browser that can render static HTML data or even remote URL.
+            A WebView is an android UI component that displays webpages. It uses the WebKit rendering engine to display web pages
+            and includes methods to navigate forward and backward through a history, zoom in and out, and perform text searches and more.</p>
+        <p>Few steps are involved to implement a WebView in mobile application:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Declaring a WebView layout
+                <div class="listingblock">
+                    <pre>
+                    &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:id="@+id/urlContainer"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal" &gt;
+
+                            &lt;WebView
+                                    android:id="@+id/webView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/&gt;
+                        &lt;/LinearLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Loading static Html data on WebView
+                <div class="listingblock">
+                    <pre>
+                    WebView webView = (WebView) findViewById(R.id.webView);
+                    String customHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello, WebView&lt;/h1&gt;" +
+                               "&lt;p&gt;This is a sample paragraph.&lt;/p&gt;" +
+                               "&lt;/body&gt;&lt;/html&gt;";
+                    webView.loadData(customHtml, "text/html", "UTF-8");
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Loading remote URL on WebView
+                <div class="listingblock">
+                    <pre>
+                    WebView webView = (WebView) findViewById(R.id.webView);
+                    webView.loadUrl("http://google.com");
+                    </pre>
+                </div>
+                As we need to make network requests, we need to add INTERNET permission in AndroidManifest.xml.
+                <div class="listingblock">
+                    <pre>
+                    &lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+                    </pre>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+</html>

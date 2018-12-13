@@ -1,0 +1,54 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Simple Notifications</h2>
+    <div class="ulist">
+        <ul>
+            <li>
+                Add the support library to the dependencies section of app level build.gradle file:
+                <div class="listingblock">
+                    <pre>
+                    dependencies {
+                        ...
+                        compile "com.android.support:support-v4:24.1.1"
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create a basic notification inside MainActivity.java file:
+                <div class="listingblock">
+                    <pre>
+                    public void sendNotification(View view) {
+                        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
+                        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                        mBuilder.setContentIntent(pendingIntent);
+                        mBuilder.setSmallIcon(R.drawable.notification_icon)
+                        mBuilder.setContentTitle("My notification")
+                        mBuilder.setContentText("Hello World!");
+                        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        mNotificationManager.notify(0, mBuilder.build());
+                     }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                The above method can be called on a button click:
+                <div class="listingblock">
+                    <pre>
+                    &lt;Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Click Me!"
+                        android:id="@+id/button"
+                        android:onClick="sendNotification"/&gt;
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

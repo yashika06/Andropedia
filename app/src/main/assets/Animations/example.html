@@ -1,0 +1,83 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">FadeIn Animation Example</h2>
+    <div class="ulist">
+        <p>Basic steps of creating an animation are: </p>
+        <ul>
+            <li>
+                <b>Create xml that defines the animation</b>
+                This file should be located under <em>anim</em> folder under <em>res</em> directory (<em>res ⇒ anim ⇒ animation.xml</em>).
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                    &lt;set xmlns:android="http://schemas.android.com/apk/res/android" android:fillAfter="true" &gt;
+                        &lt;alpha
+                            android:duration="1000"
+                            android:fromAlpha="0.0"
+                            android:interpolator="@android:anim/accelerate_interpolator"
+                            android:toAlpha="1.0" /&gt;
+                    &lt;/set&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Load the animation</b>
+                Next in our activity create an object of Animation class.
+                And load the xml animation using AnimationUtils by calling loadAnimation function.
+                <div class="listingblock">
+                    <pre>
+                    @Override
+                    protected void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_fadein);
+                        TextView txtMessage = (TextView) findViewById(R.id.txtMessage);
+                        Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+                        animFadein.setAnimationListener(this);
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Set the animation listeners (Optional)</b>
+                If you want to listen to animation events like start, end and repeat, your activity should implements AnimationListener.
+                This step is optional. If you implement AnimationListener you will have to override following methods.
+                <ul>
+                    <li><b>onAnimationStart: </b>This will be triggered once the animation started</li>
+                    <li><b>onAnimationEnd: </b>This will be triggered once the animation is over</li>
+                    <li><b>onAnimationRepeat: </b>This will be triggered if the animation repeats</li>
+                </ul>
+                <div class="listingblock">
+                    <pre>
+                    @override
+                    public void onAnimationEnd(Animation animation) {
+                        if (animation == animFadein) {
+                            Toast.makeText(getApplicationContext(), "Animation Stopped",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // Animation is repeating
+                    }
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // Animation started
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Finally start the animation</b>
+                You can start animation whenever you want by calling startAnimation on any UI element by passing the type of animation.
+                <div class="listingblock">
+                    <pre>
+                    txtMessage.startAnimation(animFadein);
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

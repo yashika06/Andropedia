@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header_interview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#28B463"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/interview_ques_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ques No: "
+            android:textSize="25dp"
+            android:textColor="#FFFFFF"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_interview">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/interview_ques_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="On which thread service work in android?"
+                android:textSize="20dp"
+                android:padding="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/interview_ans_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/interview_ques_textview"
+                android:text="this is answer space"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+        </RelativeLayout>
+    </ScrollView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/footer_interview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#28B463"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <Button
+                android:id="@+id/btn_prev_inter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/arrow_back"
+                android:text="Previous"
+                android:background="@android:color/transparent"
+                android:textAlignment="center"
+                />
+
+
+            <Button
+                android:id="@+id/btn_next_inter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/arrow_next"
+                android:background="@android:color/transparent"
+                android:text="Next"
+                android:textAlignment="center"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

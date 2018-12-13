@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Popup Menu</h2>
+    <div class="paragraph">
+        <p>A popup menu displays a list of items in a vertical list that's anchored to the view that invoked the menu.
+            It's good for providing an overflow of actions that relate to specific content. Below code can be used to create Popup menu:
+        </p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        PopupMenu popup = new PopupMenu(this, button);
+                        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                Toast.makeText(PopupMenu1.this,
+                                        "Clicked popup menu item " + item.getTitle(),
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            }
+                        });
+                        popup.show();
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>The above method can be called on any view on which the menu is to be invoked. popup_menu is a menu xml file which contains the items to be displayed in menu.</p>
+    </div>
+</body>
+</html>

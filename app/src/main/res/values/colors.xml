@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#28B463</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#00BCD4</color>
+
+    <color name="blue">#303F9F</color>
+    <color name="green">#4CAF50</color>
+    <color name="green_teal">#009688</color>
+    <color name="purple">#673AB7</color>
+    <color name="red">#F44336</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="lime">#CDDC39</color>
+    <color name="text_color">#28B463</color>
+    <color name="bg_screen2">#20D28C</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen2">#14a895</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen2">#8CF9BF</color>
+
+
+</resources>

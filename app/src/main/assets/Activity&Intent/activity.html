@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">What is an Activity?</h2>
+    <div class="paragraph">
+        <p>Activities are one of the fundamental building blocks of apps on the Android platform. Activity represent a single
+        screen with which the user can interact. Android system initiates its program with in an Activity starting with a call on onCreate() callback method.</p>
+        <p>An activity facilitates the following key interactions between system and app:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>Keeping track of what the user currently cares about to ensure that the system keeps running the process that is hosting the activity.</li>
+            <li>Helping the app handle having its process killed so the user can return to activities with their previous state restored.</li>
+            <li>Providing a way for apps to implement user flows between each other, and for the system to coordinate these flows. </li>
+        </ul>
+
+    </div>
+    <div class="paragraph">
+        <p>Activities in the system are managed as an activity stack. When a new activity is started, it is placed on the top of the stack and becomes the running activity.
+        The previous activity always remains below it in the stack, and will not come to the foreground again until the new activty exits.</p>
+    </div>
+</body>
+</html>

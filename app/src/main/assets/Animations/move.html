@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Move Animation</h2>
+    <div class="paragraph">
+        <p>In order to change position of object use &lt;translate&gt; tag.
+            It uses fromXDelta, fromYDelta for X-direction and toXDelta, toYDelta attributes for Y-direction.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;set
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:interpolator="@android:anim/linear_interpolator"
+                            android:fillAfter="true"&gt;
+
+                           &lt;translate
+                               android:fromXDelta="0%p"
+                               android:toXDelta="75%p"
+                               android:duration="800" /&gt;
+                        &lt;/set&gt;
+        </pre>
+    </div>
+</body>
+</html>

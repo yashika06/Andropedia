@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Rotate Animation</h2>
+    <div class="paragraph">
+        <p>Rotate animation uses &lt;rotate&gt; tag. For rotate animation required tags are android:fromDegrees and android:toDegrees which defines rotation angles.</p>
+            <p><b>Clock wise</b> – use positive toDegrees value<br>
+                <b>Anti clock wise</b> – use negative toDegrees value</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;set xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+                            &lt;rotate android:fromDegrees="0"
+                                    android:toDegrees="360"
+                                    android:pivotX="50%"
+                                    android:pivotY="50%"
+                                    android:duration="600"
+                                    android:repeatMode="restart"
+                                    android:repeatCount="infinite"
+                                    android:interpolator="@android:anim/cycle_interpolator"/&gt;
+                        &lt;/set&gt;
+        </pre>
+    </div>
+</body>
+</html>

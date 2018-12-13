@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Hosting a Fragment</h2>
+    <div class="paragraph">
+        <p>To host a UI fragment, an activity must:</p>
+        <ul>
+            <li>Define a spot in its layout for the fragment’s view</li>
+            <li>Manage the lifecycle of the fragment instance</li>
+        </ul>
+    </div>
+    <div class="paragraph">
+        <p>We have two options when it comes to hosting a UI fragment in an activity:</p>
+        <ul>
+            <li>add the fragment to the activity’s layout</li>
+            <li>add the fragment in the activity’s code</li>
+        </ul>
+    </div>
+    <div class="paragraph">
+        <p>The first approach is known as using a layout fragment. It is simple but inflexible. If you add the
+            fragment to the activity’s layout, you hardwire the fragment and its view to the activity’s view and
+            cannot swap out that fragment during the activity’s lifetime.</p>
+    </div>
+    <div class="paragraph">
+        <p>The second approach, adding the fragment to the activity’s code, is more complex. But it is the only
+            way to have control at runtime over your fragments. You determine when the fragment is added to the
+            activity and what happens to it after that. You can remove the fragment, replace it with another, and
+            then add the first fragment back again.</p>
+    </div>
+</body>
+</html>

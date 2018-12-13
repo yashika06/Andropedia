@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">ZoomIn Animation</h2>
+    <div class="paragraph">
+        <p>For zoom use &lt;scale&gt; tag. Use pivotX=”50%” and pivotY=”50%” to perform zoom from the center of the element.
+            Also we need to use fromXScale, fromYScale attributes which defines scaling of the object. Keep these value lesser than toXScale, toYScale</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;set xmlns:android="http://schemas.android.com/apk/res/android"
+                             android:fillAfter="true" &gt;
+
+                            &lt;scale
+                                xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:duration="1000"
+                                android:fromXScale="1"
+                                android:fromYScale="1"
+                                android:pivotX="50%"
+                                android:pivotY="50%"
+                                android:toXScale="3"
+                                android:toYScale="3" &gt;
+                            &lt;/scale&gt;
+                        &lt;/set&gt;
+        </pre>
+    </div>
+</body>
+</html>

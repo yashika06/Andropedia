@@ -1,0 +1,21 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Introduction</h2>
+    <div class="paragraph">
+        <p>A Fragment represents a behavior or a portion of user interface in an Activity. You can combine multiple fragments in a single activity and reuse a fragment in multiple activities.
+            Interaction with fragments is done through FragmentManager. Fragments represents a particular operation or interface that is running within a larger Activity.</p>
+        <p>Though Fragment defines its own lifecycle, that lifecycle is dependent on its activity: if the activity is stopped,
+            no fragments inside of it can be started; when the activity is destroyed, all fragments will be destroyed.</p>
+        <p>For example, if in an application if we want to display a list of items with details associated with them.
+        We would compose the activity’s view from a list fragment and a detail fragment. The detail view would
+            show the details of the selected list item. The activity will replace the detail fragment with another detail fragment
+        when a new list item is selected.</p>
+    </div>
+    <div class="imageblock">
+        <img src="file:///android_asset/images/fragment_intro.png" width="100%" >
+    </div>
+</body>
+</html>

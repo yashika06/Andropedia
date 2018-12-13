@@ -1,0 +1,134 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">RecyclerView</h2>
+    <div class="paragraph">
+        <p>RecyclerView provides an ability to implement the horizontal, vertical and Expandable List.It is mainly used when we
+            have data collections whose elements can change at run time based on user action or any network events.</p>
+        <p>
+            Add the following dependency in your Gradle build file to use recyclerview.
+            <div class="listingblock">
+                <pre>
+                               dependencies {
+                                    ...
+                                    compile "com.android.support:recyclerview-v7:23.0.1"
+                                }
+                </pre>
+            </div>
+        </p>
+        <p>In RecyclerView we have to create a ViewHolder to keep the reference of View in memory, so when we need a new view it
+            either creates a new ViewHolder object to inflate the layout and hold those references or it recycles one from existing stack.</p>
+        <p>We have three LayoutManagers in RecyclerView- LinearLayoutManager, GridLayoutManager, StaggeredGridLayoutManager. Following code will
+        illustrate the implementation of horizontal recycler view.</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Add RecyclerView library dependency as mentioned above.
+            </li>
+            <li>
+                Create a RecyclerView in our activity_main.xml file.
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                    &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context="abhiandroid.com.recyclerviewexample.MainActivity"&gt;
+                        &lt;android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" /&gt;
+                    &lt;/RelativeLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create a new XML file list_items.xml for item of RecyclerView
+                <div class="listingblock">
+                    <pre>
+                    &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"&gt;
+                        &lt;TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="20dp" /&gt;
+                   &lt;/LinearLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create a new class CustomAdapter.java
+                <div class="listingblock">
+                    <pre>
+                    public class CustomAdapter extends RecyclerView.Adapter {
+                        ArrayList personNames;
+                        Context context;
+                        public CustomAdapter(Context context, ArrayList personNames) {
+                            this.context = context;
+                            this.personNames = personNames;
+                        }
+                        @Override
+                        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                            // infalte the item Layout
+                            View v = LayoutInflater.from(context).inflate(R.layout.list_items, parent, false);
+                            MyViewHolder vh = new MyViewHolder(v); // pass the view to View Holder
+                            return vh;
+                        }
+                        @Override
+                        public void onBindViewHolder(MyViewHolder holder, final int position) {
+                            holder.name.setText(personNames.get(position));
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(context, personNames.get(position), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        @Override
+                        public int getItemCount() {
+                            return personNames.size();
+                        }
+                        public class MyViewHolder extends RecyclerView.ViewHolder {
+                            TextView name;// init the item view's
+                            public MyViewHolder(View itemView) {
+                                super(itemView);
+                                name = (TextView) itemView.findViewById(R.id.name);
+                            }
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Open MainActivity.java file to instantiate the RecyclerView
+                <div class="listingblock">
+                    <pre>
+                    public class MainActivity extends AppCompatActivity {
+                        ArrayList personNames = new ArrayList<>(Arrays.asList("Person 1", "Person 2", "Person 3", "Person 4", "Person 5", "Person 6", "Person 7"));
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.activity_main);
+                            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            recyclerView.setLayoutManager(linearLayoutManager);
+                            CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, personNames);
+                            recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

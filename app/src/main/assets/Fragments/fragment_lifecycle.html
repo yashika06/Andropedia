@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Fragment Lifecycle</h2>
+    <div class="paragraph">
+        <p>Though a Fragment's lifecycle is tied to its owning activity, it has its own wrinkle on the standard activity lifecycle.  It contains callback methods similar to an activity, such as onCreate(), onStart(), onPause(), and onStop().</p>
+    </div>
+    <div class="imageblock">
+        <img src="file:///android_asset/images/fragment_lifecycle.png" width="100%" >
+    </div>
+    <div class="ulist">
+        <p>The core series of lifecycle methods that are called to bring a fragment up to resumed state are:</p>
+        <ul>
+            <li><b>onAttach(Activity) </b> called once the fragment is associated with its activity.</li>
+            <li><b>onCreate(Bundle) </b> called to do initial creation of the fragment.</li>
+            <li><b>onCreateView(LayoutInflater, ViewGroup, Bundle)) </b> creates and returns the view hierarchy associated with the fragment.</li>
+            <li><b>onActivityCreated(Bundle) </b> tells the fragment that its activity has completed its own Activity.onCreate().</li>
+            <li><b>onViewStateRestored(Bundle) </b> tells the fragment that all of the saved state of its view hierarchy has been restored.</li>
+            <li><b>onResume() </b> makes the fragment begin interacting with the user.</li>
+            <li><b>onStart() </b>  makes the fragment visible to the user.</li>
+        </ul>
+        <p>As a fragment is no longer being used, it goes through a reverse series of callbacks:</p>
+        <ul>
+            <li><b>onPause() </b> fragment is no longer interacting with the user either because its activity is being paused or a fragment operation is modifying it in the activity.</li>
+            <li><b>onStop() </b> fragment is no longer visible to the user either because its activity is being stopped or a fragment operation is modifying it in the activity.</li>
+            <li><b>onDestroyView() </b> allows the fragment to clean up resources associated with its View.</li>
+            <li><b>onDestroy() </b> called to do final cleanup of the fragment's state.</li>
+            <li><b>onDetach() </b> called immediately prior to the fragment no longer being associated with its activity.</li>
+        </ul>
+    </div>
+</body>
+</html>

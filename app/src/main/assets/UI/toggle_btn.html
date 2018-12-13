@@ -1,0 +1,47 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css" type="text/css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Toggle Buttons</h2>
+    <div class="paragraph">
+        <p>
+            A toggle button allows the user to change a setting between two states.
+            You can add a basic toggle button to your layout with the ToggleButton object.
+            Android 4.0 (API level 14) introduces another kind of toggle
+            button called a switch that provides a slider control, which you can add with a Switch object.
+        </p>
+    </div>
+
+    <div class="listingblock">
+        <pre>
+                        &lt;ToggleButton
+                                android:id="@+id/toggleButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ToggleButton"
+                                android:textOff="Off"
+                                android:textOn="On" /&gt;
+                         &lt;/RadioGroup&gt;
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>To detect when the user activates the button or switch, create an CompoundButton.OnCheckedChangeListener object
+            and assign it to the button by calling setOnCheckedChangeListener().</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+                        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked) {
+                                    // The toggle is enabled
+                                } else {
+                                    // The toggle is disabled
+                                }
+                            }
+                        });
+        </pre>
+    </div>
+</body>
+</html>

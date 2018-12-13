@@ -1,0 +1,76 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Using the Contact Content Provider</h2>
+    <div class="ulist">
+        <ul>
+            <li>
+                Add permission to read contacts in AndroidManifest.xml file.
+                <div class="listingblock">
+                    <pre>
+                    &lt;uses-permission android:name="android.permission.READ_CONTACTS" /&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create the following layout in activity_main.xml
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical" &gt;
+
+                            &lt;TextView
+                                android:id="@+id/contactview"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" /&gt;
+                        &lt;/LinearLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                In MainActivity file getContacts list and display in TextView
+                <div class="listingblock">
+                    <pre>
+                     @Override
+                    public void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_contacts);
+                        TextView contactView = (TextView) findViewById(R.id.contactview);
+
+                        Cursor cursor = getContacts();
+
+                        while (cursor.moveToNext()) {
+
+                            String displayName = cursor.getString(cursor
+                                    .getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
+                            contactView.append("Name: ");
+                            contactView.append(displayName);
+                            contactView.append("\n");
+                        }
+                    }
+
+                    private Cursor getContacts() {
+                        // Run query
+                        Uri uri = ContactsContract.Contacts.CONTENT_URI;
+                        String[] projection = new String[] { ContactsContract.Contacts._ID,ContactsContract.Contacts.DISPLAY_NAME };
+                        String selection = ContactsContract.Contacts.IN_VISIBLE_GROUP + " = '"+ ("1") + "'";
+                        String[] selectionArgs = null;
+                        String sortOrder = ContactsContract.Contacts.DISPLAY_NAME+ " COLLATE LOCALIZED ASC";
+
+
+                        return getContentResolver().query(uri, projection, selection, selectionArgs,
+                                sortOrder);
+                    }
+
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

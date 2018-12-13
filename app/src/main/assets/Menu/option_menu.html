@@ -1,0 +1,78 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+    <h2 style="color: #28B463;">Option Menu</h2>
+    <div class="paragraph">
+        <p>The options menu appears when the user presses the menu button on their Android device.
+            The options menu is typically used for providing additional info about an app, as well as linking to a help and settings
+            sections.
+            To implement an options menu for an Activity in an Android app, a few fairly straightforward steps are required.</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                <b>Creating a menu XML file</b>
+                Create a menu xml file by right clicking on menu folder inside res folder.
+                <div class="listingblock">
+                    <pre>
+                    &lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+                    &lt;/menu&gt;
+                    </pre>
+                </div>
+                Between these opening and closing tags, we will place XML markup for each item in our options menu.
+            </li>
+            <li>
+                <b>Add items to our menu</b>
+                Add an item for each menu option using the following syntax:
+                <div class="listingblock">
+                    <pre>
+                    &lt;item android:id="@+id/about"
+                          android:icon="@drawable/about"
+                          android:title="About" /&gt;
+                    &lt;item android:id="@+id/help"
+                          android:icon="@drawable/help"
+                          android:title="Help" /&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Inflating menu resource</b>
+                To instruct Android to use our options menu, open the Activity class we want it to appear with.
+                Add the following method to our Java code
+                <div class="listingblock">
+                    <pre>
+                    @override
+                    public boolean onCreateOptionsMenu(Menu menu) {
+                        MenuInflater inflater = getMenuInflater();
+                        inflater.inflate(R.menu.my_options_menu, menu);
+                        return true;
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Respond to menu item selection</b>
+                Before our code can respond appropriately to user interaction with the menu, we need to work out which item was selected.
+                Add a switch statement to our method using the following sample syntax:
+                <div class="listingblock">
+                    <pre>
+                    public boolean onOptionsItemSelected(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.about:
+                            startActivity(new Intent(this, About.class));
+                            return true;
+                            case R.id.help:
+                            startActivity(new Intent(this, Help.class));
+                            return true;
+                            default:
+                            return super.onOptionsItemSelected(item);
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</html>

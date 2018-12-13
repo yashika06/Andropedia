@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">SlideDown Animation</h2>
+    <div class="paragraph">
+        <p>Slide down is exactly opposite to slide up animation. Just interchange android:fromYScale and android:toXScale values.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;set xmlns:android="http://schemas.android.com/apk/res/android"
+                             android:fillAfter="true"&gt;
+                            &lt;scale
+                                android:duration="500"
+                                android:fromXScale="1.0"
+                                android:fromYScale="0.0"
+                                android:interpolator="@android:anim/linear_interpolator"
+                                android:toXScale="1.0"
+                                android:toYScale="1.0" /&gt;
+
+                        &lt;/set&gt;
+        </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Broadcast Receiver</h2>
+    <div class="paragraph">
+        <p>A broadcast receiver is an Android component which allows you to register for system or application events.
+            Android apps can send or receive broadcast messages from the Android system and other Android apps. </p>
+        <p>For example, applications can register for the ACTION_BOOT_COMPLETED system event which is fired once the Android system has completed the boot process.</p>
+    </div>
+    <h2 style="color: #28B463;">Implementation</h2>
+    <div class="paragraph">
+        <p>A receiver can be registered via the AndroidManifest.xml file. Alternatively to this static registration,
+            you can also register a receiver dynamically via the Context.registerReceiver() method.</p>
+        <p>The implementing class for a receiver extends the BroadcastReceiver class. If the event for which the broadcast receiver
+            has registered happens, the onReceive() method of the receiver is called by the Android system.</p>
+    </div>
+    <h2 style="color: #28B463;">Pending Intent</h2>
+    <div class="paragraph">
+        <p>A pending intent is a token that you give to another application. This allows the other application to restore the
+            permissions of your application to execute a predefined piece of code.</p>
+        <p>To perform a broadcast via a pending intent, get a PendingIntent via the getBroadcast() method of the PendingIntent class.
+            To perform an activity via a pending intent, you receive the activity via PendingIntent.getActivity().</p>
+    </div>
+</body>
+</html>

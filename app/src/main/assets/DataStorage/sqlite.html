@@ -1,0 +1,48 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">External Storage</h2>
+    <div class="paragraph">
+        <p>Sqlite is an opensource SQL database that stores data to a text file on a device. Whenever an application needs to store
+            large amount of data then using sqlite is more preferable than other repository system like SharedPreferences or saving data in files.
+            It carry light weight data and suitable with many languages. So, it doesn’t required any administration or setup procedure of the database.</p>
+
+        <p>For creating, updating and other operations you need to create a subclass or SQLiteOpenHelper class.
+            SQLiteOpenHelper is a helper class to manage database creation and version management.
+            It provides two methods onCreate(SQLiteDatabase db), onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion).</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        public class LoginAuthentication extends SQLiteOpenHelper {
+                            private static final int DATABASE_VERSION = 1;
+                            private static final String TABLE_NAME = "user";
+                            private static final String TABLE_CREATE =
+                                        "CREATE TABLE " + TABLE_NAME + " (" +
+                                        name + " VARCHAR, " +
+                                        password + " VARCHAR);";
+
+                            LoginAuthentication(Context context) {
+                                super(context, DATABASE_NAME, null, DATABASE_VERSION);
+                            }
+
+                            @Override
+                            public void onCreate(SQLiteDatabase db) {
+                                db.execSQL(DICTIONARY_TABLE_CREATE);
+                            }
+                            @Override
+                            public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+                                try {
+                                    Message.message(context,"OnUpgrade");
+                                    db.execSQL(DROP_TABLE);
+                                    onCreate(db);
+                                }catch (Exception e) {
+                                    Message.message(context,""+e);
+                                }
+                            }
+                        }
+        </pre>
+    </div>
+</body>
+</html>

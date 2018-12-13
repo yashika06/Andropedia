@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">ScrollView</h2>
+    <div class="paragraph">
+        <p>ScrollView is a view group that allows the view hierarchy placed within it to be scrolled.
+            Scroll view may have only one direct child placed within it. To add multiple views within the scroll view, make the direct child you add a view group, for example LinearLayout, and place additional views within that LinearLayout.</p>
+        <p>We should never use a ScrollView with a ListView or GridView, because they both takes care of their own vertical scrolling.
+            ScrollView only supports vertical scrolling. Use HorizontalScrollView for horizontal scrolling. Following code snippet shows the implementation of ScrollViews:</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:fillViewport="false"&gt;
+
+                            &lt;LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"&gt;
+                                <!-- Add views here -->
+                            &lt;/LinearLayout&gt;
+                        &lt;/ScrollView&gt;
+        </pre>
+    </div>
+</body>
+</html>

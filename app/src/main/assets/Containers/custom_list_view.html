@@ -1,0 +1,105 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Custom Listview</h2>
+    <div class="paragraph">
+        <p>The ArrayAdapter is limited as it supports only the mapping of toString() to one view in the row layout.
+            To control the data assignment and to support several views, you have to create your custom adapter implementation.</p>
+        <p>Various steps to create a custom listview are illustrated below: </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Add ListView in activity layout file
+                <div class="listingblock">
+                    <pre>
+                    &lt;ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:id="@+id/listview"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" /&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create a layout file(listview_items) containing a multiple views
+                <div class="listingblock">
+                    <pre>
+                    &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"&gt;
+                        &lt;ImageView
+                                android:id="@+id/image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" /&gt;
+                        &lt;TextView
+                                android:id="@+id/title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="20dp"
+                                android:textStyle="bold"/&gt;
+                    &lt;/LinearLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create an adapter class which extends ArrayAdapter
+                <div class="listingblock">
+                    <pre>
+                    public class ListAdapter extends ArrayAdapter{
+                        int[] imageRes;
+                        String[] titles;
+                        private Context context;
+                        public ListAdapter(Context context, int[] image, String[] titles){
+                            super(context, R.layout.listview_items, R.id.title, titles);
+                            this.context=context;
+                            this.imageRes = image;
+                            this.titles=titles;
+                        }
+                        @override
+                        public View getView(int pos, View convertView, ViewGroup parent){
+                            LayoutInflater inflater = LayoutInflater.from(context);
+                            View view = inflater.inflate(R.layout.listview_items,parent,false);
+
+                            ImageView imageview = (ImageView) view.findViewById(R.id.image);
+                            TextView text = (TextView) view.findViewById(R.id.title);
+                            imageview.setImageResource(imageRes[pos]);
+                            text.setText(imageRes[pos]);
+                            return view;
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Add adapter to listview in main activity
+                <div class="listingblock">
+                    <pre>
+                    public class MainActivity extends Activity{
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.activity_main);
+                            final ListView listview = (ListView) findViewById(R.id.listview);
+                            String[] titles = new String[] { "Title1", "Title2" , "Title3", "Title4"};
+                            int images[] = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4};
+                            ArrayAdapter adapter = new ArrayAdapter&lt;String&gt;(this,images,titles);
+                            listview.setAdapter(adapter);
+                            listView.setOnItemClickListener(new OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Toast.makeText(getApplicationContext(),"Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

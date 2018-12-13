@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">System Broadcast</h2>
+    <div class="paragraph">
+        <p>The system automatically sends broadcasts when various system events occur, such as when the system switches in and out of
+            airplane mode. System broadcasts are sent to all apps that are subscribed to receive the event.</p>
+    </div>
+    <h2 style="color: #28B463;">Receiving Broadcast</h2>
+    <div class="ulist">
+        <ul>
+            <li>
+                Specify the &lt;receiver&gt; element in app's manifest.
+                <div class="listingblock">
+                    <pre>
+                    &lt;receiver android:name=".MyBroadcastReceiver"  android:exported="true"&gt;
+                        &lt;intent-filter&gt;
+                            &lt;action android:name="android.intent.action.BOOT_COMPLETED"/&gt;
+                            &lt;action android:name="android.intent.action.INPUT_METHOD_CHANGED" /&gt;
+                        &lt;/intent-filter&gt;
+                    &lt;/receiver&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Subclass BroadcastReceiver and implement onReceive(Context, Intent).
+                <div class="listingblock">
+                    <pre>
+                    public class MyBroadcastReceiver extends BroadcastReceiver {
+                        private static final String TAG = "MyBroadcastReceiver";
+                        @Override
+                        public void onReceive(Context context, Intent intent) {
+                            StringBuilder sb = new StringBuilder();
+                            sb.append("Action: " + intent.getAction() + "\n");
+                            sb.append("URI: " + intent.toUri(Intent.URI_INTENT_SCHEME).toString() + "\n");
+                            String log = sb.toString();
+                            Log.d(TAG, log);
+                            Toast.makeText(context, log, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <h2 style="color: #28B463;">Sending Broadcast</h2>
+    <div class="paragraph">
+        <p>Android provides three ways for apps to send broadcast:</p>
+        <ul>
+            <li>The sendOrderedBroadcast(Intent, String) method sends broadcasts to one receiver at a time. </li>
+            <li>The sendBroadcast(Intent) method sends broadcasts to all receivers in an undefined order. </li>
+            <li>The LocalBroadcastManager's sendBroadcast() method sends broadcasts to receivers that are in the same app as the sender.</li>
+        </ul>
+        <p>The following code snippet demonstrates how to send a broadcast by creating an Intent and calling sendBroadcast(Intent).</p>
+        <div class="listingblock">
+            <pre>
+                        Intent intent = new Intent();
+                        intent.setAction("com.example.broadcast.MY_NOTIFICATION");
+                        intent.putExtra("data","Notice to broadcast");
+                        sendBroadcast(intent);
+            </pre>
+        </div>
+    </div>
+</body>
+</html>

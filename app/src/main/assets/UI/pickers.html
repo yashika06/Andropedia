@@ -1,0 +1,89 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Pickers</h2>
+    <div class="paragraph">
+        <p>Android provides controls for the user to pick a time or pick a date as ready-to-use dialogs. Each picker provides controls for selecting each part of the time (hour, minute, AM/PM) or date (month, day, year). Using these pickers helps ensure that your users can pick a time or date that is valid, formatted correctly, and adjusted to the user's locale.</p>
+    </div>
+    <h2 style="color: #28B463;">DatePicker</h2>
+    <div class="paragraph">
+        <p>To display a DatePickerDialog using DialogFragment, we need to define a fragment class that extends DialogFragment and return a DatePickerDialog from the fragment's onCreateDialog() method.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+                            @Override
+                            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                                // Use the current date as the default date in the picker
+                                final Calendar c = Calendar.getInstance();
+                                int year = c.get(Calendar.YEAR);
+                                int month = c.get(Calendar.MONTH);
+                                int day = c.get(Calendar.DAY_OF_MONTH);
+
+                                // Create a new instance of DatePickerDialog and return it
+                                return new DatePickerDialog(getActivity(), this, year, month, day);
+                            }
+
+                            public void onDateSet(DatePicker view, int year, int month, int day) {
+                                // Do something with the date chosen by the user
+                            }
+                        }
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>Now all we need is an event that adds an instance of this fragment to our activity.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                         public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
+                            protected void onCreate(Bundle savedInstanceState) {
+                                super.onCreate(savedInstanceState);
+                                setContentView(R.layout.activity_main);
+                                DialogFragment dateFragment = new DatePickerFragment();
+                                dateFragment.show(getSupportFragmentManager(), "datePicker");
+                            }
+                         }
+        </pre>
+    </div>
+    <h2 style="color: #28B463;">TimePicker</h2>
+    <div class="paragraph">
+        <p>o display a TimePickerDialog using DialogFragment, we need to define a fragment class that extends DialogFragment and return a TimePickerDialog from the fragment's onCreateDialog() method.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+                            @Override
+                            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                                // Use the current time as the default values for the picker
+                                final Calendar c = Calendar.getInstance();
+                                int hour = c.get(Calendar.HOUR_OF_DAY);
+                                int minute = c.get(Calendar.MINUTE);
+                                // Create a new instance of TimePickerDialog and return it
+                                return new TimePickerDialog(getActivity(), this, hour, minute,
+                                        DateFormat.is24HourFormat(getActivity()));
+                            }
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                // Do something with the time chosen by the user
+                            }
+                        }
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>Now all we need is an event that adds an instance of this fragment to our activity.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                         public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
+                            protected void onCreate(Bundle savedInstanceState) {
+                                super.onCreate(savedInstanceState);
+                                setContentView(R.layout.activity_main);
+                                DialogFragment timeFragment = new TimePickerFragment();
+                                timeFragment.show(getSupportFragmentManager(), "timePicker");
+                            }
+                         }
+        </pre>
+    </div>
+</body>
+</html>

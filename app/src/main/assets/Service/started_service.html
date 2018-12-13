@@ -1,0 +1,84 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Started Service</h2>
+    <div class="paragraph">
+        <p>A started service is one that another component starts by calling startService(), which results in a call to
+            the service's onStartCommand() method. Traditionally, there are two classes you can extend to create a started service:
+        </p>
+        <b>Service</b>
+        <p>This is the base class for all services. If we require our service to perform multi-threading, we can extend the Service class to handle each intent.</p>
+        <b>IntentService</b>
+        <p>This is a subclass of Service.  If we don't require that our service handle multiple requests simultaneously, we can extend the IntentService class.
+        The IntentService class do the following: </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>It creates a default worker thread that executes all of the intents that are delivered to onStartCommand().</li>
+            <li>Creates a work queue that passes one intent at a time to our onHandleIntent() implementation.</li>
+            <li>Stops the service after all of the start requests are handled, so we never have to call stopSelf().</li>
+            <li>Provides a default implementation of onBind() that returns null.</li>
+            <li>Provides a default implementation of onStartCommand() that sends the intent to the work queue and then to your onHandleIntent() implementation.</li>
+        </ul>
+    </div>
+    <div class="paragraph">
+        <p><b>Steps of creating a started service</b></p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Declare a service in AndroidManifest.xml file
+                <div class="listingblock">
+                    <pre>
+                        &lt;manifest ... &gt;
+                          ...
+                          &lt;application ... &gt;
+                              &lt;service android:name=".ExampleService" /&gt;
+                              ...
+                          &lt;/application&gt;
+                        &lt;/manifest&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Extending IntentService class
+                <div class="listingblock">
+                    <pre>
+                        public class ExampleService extends IntentService {
+                            public ExampleService() {
+                                super("ExampleService");
+                            }
+                            @Override
+                            public int onStartCommand(Intent intent, int flags, int startId) {
+                                Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
+                                return super.onStartCommand(intent,flags,startId);
+                            }
+                            @Override
+                            protected void onHandleIntent(Intent intent) {
+                                //do some work here
+                                Toast.makeText(this, "inside onHandleIntent", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    </pre>
+                </div>
+                In the implementation with IntentService a constructor is required, and must call the super IntentService(String)
+                constructor with a name for the worker thread. The IntentService calls onHandleIntent() method from the default worker thread with
+                the intent that started the service. The onStartCommand() must return the default implementation, which is how the intent is delivered to onHandleIntent().
+            </li>
+            <li>
+                Starting a service
+                <div class="listingblock">
+                    <pre>
+                        Intent intent = new Intent(this, ExampleService.class);
+                        startService(intent);
+                    </pre>
+                </div>
+                We can start a service from an activity or other application component by passing an Intent to startService().
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

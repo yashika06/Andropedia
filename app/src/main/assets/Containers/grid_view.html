@@ -1,0 +1,106 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">GridView</h2>
+    <div class="paragraph">
+        <p>GridView is a ViewGroup that displays items in a two-dimensional, scrollable grid. Following steps will illustrate the implementation of GridView in an application:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Create activity_main.xml file and insert GridView in it.
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#f0f0f0"&gt;
+                            &lt;GridView
+                                      android:id="@+id/gridview"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="match_parent"
+                                      android:columnWidth="100dp"
+                                      android:numColumns="auto_fit"
+                                      android:verticalSpacing="10dp"
+                                      android:horizontalSpacing="10dp"
+                                      android:stretchMode="columnWidth"
+                                      android:gravity="center" /&gt;
+                            </RelativeLayout>
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create another xml file (list_items.xml) for setting items in gridview
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp" &gt;
+                            &lt;ImageView
+                                android:id="@+id/grid_item_image"
+                                android:layout_width="50px"
+                                android:layout_height="50px"
+                                android:layout_marginRight="10px"
+                                android:src="@drawable/android_logo" /&gt;
+                        &lt;/LinearLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create an adapter class (GridViewAdapter) which extends BaseAdapter
+                <div class="listingblock">
+                    <pre>
+                    public class GridViewAdapter extends ArrayAdapter {
+                        private Context context;
+                        private int resource;
+                        private int[] images;
+                        public GridViewAdapter(Context context, int resource, int[] images) {
+                            super(context, layoutResourceId, data);
+                            this.resource = resource;
+                            this.context = context;
+                            this.images = images;
+                        }
+                        @Override
+	                    public View getView(int position, View convertView, ViewGroup parent) {
+                            LayoutInflater inflater = LayoutInflater.from(context);
+                            View view = inflater.inflate(resource,parent,false);
+
+                            ImageView imageview = (ImageView) view.findViewById(R.id.image);
+                            imageview.setImageResource(images[position]);
+                            return view;
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Setting adapter to GridView by adding the following code inside MainActivity.java file:
+                <div class="listingblock">
+                    <pre>
+                    public class MainActivity extends ActionBarActivity {
+                        private GridView gridView;
+                        private GridViewAdapter gridAdapter;
+                        int[] images= {R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6};
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.activity_main);
+
+                            gridView = (GridView) findViewById(R.id.gridView);
+                            gridAdapter = new GridViewAdapter(this, R.layout.list_items, images);
+                            gridView.setAdapter(gridAdapter);
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

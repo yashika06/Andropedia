@@ -1,0 +1,50 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">androidmanifest.xml</h2>
+    <div class="paragraph">
+        <p>
+            Every application must have an <code>AndroidManifest.xml</code> file (with precisely that
+            name) in its root directory. The manifest file
+            provides essential information about your app to the Android system, which
+              the system must have before it can run any of the app's
+              code.</span>
+        </p>
+    </div>
+    <h2 style="color: #28B463;">Manifest file structure</h2>
+    <div class="paragraph">
+        <p>
+            The code snippet below shows the general structure of the manifest file and
+            every element that it can contain.
+        </p>
+    </div>
+    <div class="imageblock">
+        <img src="file:///android_asset/images/android_manifest.png" width="100%" alt="Android software layers">
+    </div>
+    <h2 style="color: #28B463;">Elements Detail</h2>
+    <div class="paragraph">
+        <p>
+            <b>&lt;manifest&gt; </b> manifest is the root element of the AndroidManifest.xml file. It has package attribute that describes the package name of the activity class.
+        </p>
+    </div>
+    <div class="paragraph">
+        <p>
+            <b>&lt;application&gt; </b> application is the subelement of the manifest. It includes the namespace declaration. This element contains several subelements that declares the application component such as activity etc.
+        </p>
+    </div>
+    <div class="paragraph">
+        <p>
+            <b>&lt;activity&gt; </b> activity is the subelement of application and represents an activity that must be defined in the AndroidManifest.xml file. It has many attributes such as label, name, theme, launchMode etc.
+        </p>
+    </div>
+    <div class="paragraph">
+        <p>
+            <b>&lt;intent-filter&gt; </b> intent-filter is the sub-element of activity that describes the type of intent to which activity, service or broadcast receiver can respond to.
+        </p>
+    </div>
+
+
+</body>
+</html>

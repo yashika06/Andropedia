@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Internal Storage</h2>
+    <div class="paragraph">
+        <p>Internal storage is the storage of the private data on the device memory.
+            By default these files are private and are accessed by only your application and get deleted,
+            when user delete your application.</p>
+    </div>
+    <h2 style="color: #28B463;">Writing data to file</h2>
+    <div class="listingblock">
+        <pre>
+                        FileOutputStream fileout=openFileOutput("mytextfile.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+                        outputWriter.write(textmsg.getText().toString());
+                        outputWriter.close();
+        </pre>
+    </div>
+    <h2 style="color: #28B463;">Reading data from file</h2>
+    <div class="listingblock">
+        <pre>
+                        FileInputStream fileIn=openFileInput("mytextfile.txt");
+                        int read=-1;
+                        StringBuffer buffer = new StringBuffer();
+                        while(read = fileIn.read()!=-1){
+                            buffer.append((char)read);
+                        }
+                        fileIn.close();
+        </pre>
+    </div>
+</body>
+</html>

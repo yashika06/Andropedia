@@ -1,0 +1,56 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Project Structure</h2>
+    <h2 style="color: #28B463;">Main Project</h2>
+    <div class="paragraph">
+        <p>
+            This would be entire project context. Whatever you do in IntelliJ IDEA, you do that in the context of a project. A project is an organizational unit that represents a complete software solution. A project in Android Studio is like a workspace in Eclipse. In android Studio a project, can contain multiple modules.
+        </p>
+    </div>
+    <div class="imageblock">
+        <img src="file:///android_asset/images/prjct_struc.png" width="100%" >
+    </div>
+    <h2 style="color: #28B463;">.idea</h2>
+    <div class="paragraph">
+        <p>
+            Eclipse uses project.properties file for project specific metadata. Here in android studio, this .idea does the same thing. This means the project specific metadata is stored by Android Studio.
+        </p>
+    </div>
+    <h2 style="color: #28B463;">Project Module(app) </h2>
+    <div class="paragraph">
+        <p>
+            This is the actual project folder where your application code resides. The application folder has following sub directories
+        </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                <b>build: </b>  This has all the complete output of the make process i.e. classes.dex, compiled classes and resources, etc. In the Android Studio GUI, only a few folders are shown. The important part is that your R.java is found here.
+            </li>
+            <li>
+                <b>libs: </b> This is a commonly seen folder in eclipse land too, which optionally can hold the libraries or .jar files.
+            </li>
+            <li>
+                <b>src: </b> The src folder can have both application code and android unit test script. You will find two folders named “androidTest” and “main” correspond to src folder. The main folder contains two subfolders java and res. The java folder contains all the java codes and res contains drawables, layouts, etc.
+            </li>
+        </ul>
+    </div>
+
+        <h2 style="color: #28B463;">gradle </h2>
+        <div class="paragraph">
+            <p>
+                This is where the gradle build system’s jar wrapper i.e. this jar is how AS communicates with gradle installed in Operating System.
+            </p>
+        </div>
+        <h2 style="color: #28B463;">External Libraries </h2>
+        <div class="paragraph">
+            <p>
+                This is not actually a folder but a place where Referenced Libraries and information on targeted platform SDK is shown.
+            </p>
+        </div>
+
+</body>
+</html>

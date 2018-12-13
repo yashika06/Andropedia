@@ -1,0 +1,89 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Schedule a receiver via the Android alert manager system service. </h2>
+    <div class="ulist">
+        <ul>
+            <li>Create the following layout in activity_main.xml
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                        &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical" &gt;
+                            &lt;EditText
+                                android:id="@+id/time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="Number of seconds"
+                                android:inputType="numberDecimal" &gt;
+                            &lt;/EditText>
+                            &lt;Button
+                                android:id="@+id/ok"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="startAlert"
+                                android:text="Start Counter" &gt;
+                            &lt;/Button&gt;
+                        &lt;/LinearLayout&gt;
+                    </pre>
+                </div>
+            </li>
+
+            <li>
+                Create the following broadcast receiver class.
+                <div class="listingblock">
+                    <pre>
+                    public class MyBroadcastReceiver extends BroadcastReceiver {
+                        @Override
+                        public void onReceive(Context context, Intent intent) {
+                            Toast.makeText(context, "Time is up!!!!.", Toast.LENGTH_LONG).show();
+                            // Vibrate the mobile phone
+                            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+                            vibrator.vibrate(2000);
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Register this class as a broadcast receiver in AndroidManifest.xml and request authorization to vibrate the phone.
+                <div class="listingblock">
+                    <pre>
+                    &lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
+                    &lt;application>
+                        ....
+                        &lt;receiver android:name="MyBroadcastReceiver" &gt;
+                        &lt;/receiver&gt;
+                    &lt;/application&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                In MainActivity creates an intent to start the receiver and register this intent with the alarm manager service.
+                <div class="listingblock">
+                    <pre>
+                    @Override
+                        public void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.activtiy_main);
+                    }
+                    public void startAlert(View view) {
+                        EditText text = (EditText) findViewById(R.id.time);
+                        int set_time = Integer.parseInt(text.getText().toString());
+                        Intent intent = new Intent(this, MyBroadcastReceiver.class);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324243, intent, 0);
+                        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+ (set_time * 1000), pendingIntent);
+                        Toast.makeText(this, "Alarm set in " + set_time + " seconds",Toast.LENGTH_LONG).show();
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

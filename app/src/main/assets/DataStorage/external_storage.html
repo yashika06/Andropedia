@@ -1,0 +1,89 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">External Storage</h2>
+    <div class="paragraph">
+        <p>Android external storage can be used to write and save data, read configuration files etc.
+        In general there are two types of external storage: removable storage media (such as an SD card) or an internal (non-removable) storage.</p>
+        <p>n order to read or write files on the external storage, your app must acquire the READ_EXTERNAL_STORAGE or WRITE_EXTERNAL_STORAGE system permissions.</p>
+        <div class="listingblock">
+            <pre>
+                        &lt;manifest ...&gt;
+                            &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+                            &lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /&gt;
+                            ...
+                        &lt;/manifest&gt;
+            </pre>
+        </div>
+        <p>Before you do any work with the external storage, you should always call getExternalStorageState() to check whether the media is available. </p>
+        <div class="listingblock">
+            <pre>
+                        String state = Environment.getExternalStorageState();
+                        if (Environment.MEDIA_MOUNTED.equals(state)) {
+                            return true;
+                        }else{
+                            return false;
+                        }
+            </pre>
+        </div>
+
+    </div>
+    <h2 style="color: #28B463;">Methods to Store Data In External Storage:</h2>
+    <div class="ulist">
+        <ul>
+            <li><b>getExternalStorageDirectory(): </b>It directly get the reference to the root directory of your external storage or SD Card.
+             It is an older way to access external storage.</li>
+            <li><b>getExternalFilesDir(String type): </b> It is recommended way to enable us to create private files specific to app and files are removed as app is uninstalled.</li>
+            <li><b>getExternalStoragePublicDirectory(): </b> It enable us to keep files public and are not deleted with the app uninstallation.</li>
+        </ul>
+    </div>
+    <div class="paragraph">
+        <p>Saving files that can be shared with other apps</p>
+        <div class="listingblock">
+            <pre>
+                        public void savePublic(View view) {
+                            String info = "Text to store data in public file";
+                            File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);// Folder Name
+                            File myFile = new File(folder, "file.txt");// Filename
+                            writeData(myFile, info);
+                        }
+            </pre>
+        </div>
+        <p>Saving files that are app-private</p>
+        <div class="listingblock">
+            <pre>
+                        public void savePrivate(View view) {
+                            String info = "Text to store data in private file";
+                            File folder = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);// Folder Name
+                            File myFile = new File(folder, "file2.txt");// Filename
+                            writeData(myFile, info);
+                        }
+            </pre>
+        </div>
+        <p>Create a method to write data to file</p>
+        <div class="listingblock">
+            <pre>
+                         private void writeData(File myFile, String data) {
+                            FileOutputStream fileOutputStream = null;
+                            try {
+                                fileOutputStream = new FileOutputStream(myFile);
+                                fileOutputStream.write(data.getBytes());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+                                if (fileOutputStream != null) {
+                                    try {
+                                        fileOutputStream.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+            </pre>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Bound Service</h2>
+    <div class="paragraph">
+        <p>A bound service is an implementation of the Service class that allows other applications to bind to it and interact with it.
+            If our service is used only by the local application and does not need to work across processes, then we can implement our own Binder class that provides our client direct access to public methods in the service.</p>
+    </div>
+    <div class="paragraph">
+        <p><b>Steps of creating a bounded service</b></p>
+    </div>
+    <div class="ulist">
+    <ul>
+        <li>
+            Declare a service in AndroidManifest.xml file
+            <div class="listingblock">
+                    <pre>
+                        &lt;manifest ... &gt;
+                          ...
+                          &lt;application ... &gt;
+                              &lt;service android:name=".ExampleService" /&gt;
+                              ...
+                          &lt;/application&gt;
+                        &lt;/manifest&gt;
+                    </pre>
+            </div>
+        </li>
+        <li>
+            Extending the binder class
+            <div class="listingblock">
+                <pre>
+                    public class BoundServiceExample extends Service {
+                        private final IBinder mBinder = new BoundBinder();
+                        private final Random mGenerator = new Random();
+                        /**
+                         * Class used for the client Binder.  Because we know this service always
+                         * runs in the same process as its clients, we don't need to deal with IPC.
+                         */
+                        public class BoundBinder extends Binder {
+                            BoundServiceExample getService() {
+                                // Return this instance of BoundServiceExample so clients can call public methods
+                                return BoundServiceExample.this;
+                            }
+                        }
+                        @Override
+                        public IBinder onBind(Intent intent) {
+                            return mBinder;
+                        }
+                        /** method for clients */
+                        public int getRandomNumber() {
+                          return mGenerator.nextInt(100);
+                        }
+                    }
+                </pre>
+            </div>
+        </li>
+        <li>
+            Calling Bound Service
+            <div class="listingblock">
+                <pre>
+                    public class BindingActivity extends Activity {
+                        BoundServiceExample mService;
+                        boolean mBound = false;
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.main);
+                            Button btn = findViewById(R.id.btn);
+                            button.setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View v) {
+                                  if (mBound) {
+                                    int num = mService.getRandomNumber();
+                                    Toast.makeText(this, "number: " + num, Toast.LENGTH_SHORT).show();
+                                   }
+                                }
+                              });
+                        }
+                        @Override
+                        protected void onStart() {
+                            super.onStart();
+                            Intent intent = new Intent(this, BoundServiceExample.class);
+                            bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+                        }
+                         @Override
+                        protected void onStop() {
+                            super.onStop();
+                            if (mBound) {
+                                unbindService(mConnection);
+                                mBound = false;
+                            }
+                        }
+
+                        private ServiceConnection mConnection = new ServiceConnection() {
+                            @Override
+                            public void onServiceConnected(ComponentName className, IBinder service) {
+                                BoundBinder binder = (BoundBinder) service;
+                                mService = binder.getService();
+                                mBound = true;
+                            }
+                            @Override
+                            public void onServiceDisconnected(ComponentName arg0) {
+                                mBound = false;
+                            }
+                        };
+
+                    }
+
+
+                </pre>
+            </div>
+        </li>
+    </ul>
+    </div>
+</body>
+</html>

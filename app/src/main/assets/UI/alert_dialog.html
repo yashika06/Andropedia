@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">AlertDialog</h2>
+    <div class="paragraph">
+        <p>A dialog is a small window that prompts the user to make a decision or enter additional information. A dialog does not fill the screen and is normally used for modal events that require users to take an action before they can proceed.</p>
+        <p>To create an alert dialog we need to create an instance of Builder class. Following code snippet will create an alert dialog with two buttons</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle(R.string.alert_title)
+                               .setMessage(R.string.alert_message)
+                               .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                   public void onClick(DialogInterface dialog, int id) {
+                                       // Do something positive
+                                   }
+                               })
+                               .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                   public void onClick(DialogInterface dialog, int id) {
+                                       // User cancelled the dialog
+                                   }
+                               });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+        </pre>
+    </div>
+
+</body>
+</html>

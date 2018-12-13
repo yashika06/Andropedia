@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css" type="text/css">
+</head>
+<body>
+    <h2 style="color: #28B463;">TextView</h2>
+    <div class="paragraph">
+        <p>
+            A user interface element that displays text to the user. EditText is a subclass that configures the text view for editing.
+            The following code sample shows a typical use, with an XML layout and code to modify the contents of the text view:
+        </p>
+    </div>
+    <div class="listingblock">
+                <pre >
+                       &lt;LinearLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"&gt;
+                             &lt;TextView
+                                android:id="@+id/text_view"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="@string/hello" /&gt;
+                        &lt;/LinearLayout&gt;
+                    </pre>
+    </div>
+    <div class="paragraph">
+        <p>
+            This code sample demonstrates how to modify the contents of the text view defined in the previous XML layout:
+        </p>
+    </div>
+    <div class="listingblock">
+                <pre >
+                       public class MainActivity extends Activity {
+                        protected void onCreate(Bundle savedInstanceState) {
+                             super.onCreate(savedInstanceState);
+                             setContentView(R.layout.activity_main);
+                             final TextView hellotext = (TextView) findViewById(R.id.text_view);
+                             hellotext.setText("Hello User");
+                            }
+                        }
+                    </pre>
+    </div>
+</body>
+</html>

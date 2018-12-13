@@ -1,0 +1,48 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Resources Files</h2>
+    <div class="paragraph">
+        <p>
+            Resource files must be placed in the /res directory of your application in a predefined sub-folder.
+            The specific sub-folder depends on type of resource which is stored. You can also append additional qualifiers to the folder name. These are called resource qualifiers.
+            These qualifiers indicate that the related resources should be used for special device configurations.
+        </p>
+    </div>
+    <h2 style="color: #28B463;">Directory and resource types</h2>
+    <div class="ulist">
+        <ul>
+            <li>
+                <b>anim/ </b>  XML files that define property animations. They are saved in res/anim/ folder and accessed from the R.anim class.
+            </li>
+            <li>
+                <b>color/ </b> XML files that define a state list of colors. They are saved in res/color/ and accessed from the R.color class.
+            </li>
+            <li>
+                <b>drawable/ </b> Image files like .png, .jpg, .gif or XML files that are compiled into bitmaps, state lists, shapes, animation drawable. They are saved in res/drawable/ and accessed from the R.drawable class.
+            </li>
+            <li>
+                <b>layout/ </b> XML files that define a user interface layout. They are saved in res/layout/ and accessed from the R.layout class.
+            </li>
+            <li>
+                <b>menu/ </b> XML files that define application menus, such as an Options Menu, Context Menu, or Sub Menu. They are saved in res/menu/ and accessed from the R.menu class.
+            </li>
+            <li>
+                <b>raw/ </b> Arbitrary files to save in their raw form. To open these resources with a raw InputStream, call Resources.openRawResource() with the resource ID, which is R.raw.filename.
+            </li>
+            <li>
+                <b>values/ </b> XML files that contain simple values, such as strings, integers, and colors. For example, here are some filename conventions for resources you can create in this directory −
+                <ul>
+                    <li>arrays.xml</li>
+                    <li>colors.xml</li>
+                    <li>dimen.xml</li>
+                    <li>string.xml</li>
+                    <li>style.xml</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

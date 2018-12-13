@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Accessing a provider</h2>
+    <div class="paragraph">
+        <p>To access data in a content provider, you use the ContentResolver object in your application's Context to communicate with the provider as a client.
+            The ContentResolver object communicates with the provider object, an instance of a class that implements ContentProvider</p>
+        <p>A common pattern for accessing a ContentProvider from your UI uses a CursorLoader to run an asynchronous query in the background.
+            The Activity or Fragment in your UI call a CursorLoader to the query, which in turn gets the ContentProvider using the ContentResolver. </p>
+        <p>To access a provider, your application usually has to request specific permissions in its manifest file. </p>
+        <div class="imageblock">
+            <img src="file:///android_asset/images/accessing_provider.png" width="100%" >
+        </div>
+        <p>The following lines of code show a ContentResolver.query() call:</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        mCursor = getContentResolver().query(
+                        content_uri,   // The content URI of the words table
+                        mProjection,                        // The columns to return for each row
+                        mSelectionClause                    // Selection criteria
+                        mSelectionArgs,                     // Selection criteria
+                        mSortOrder);                        // The sort order for the returned rows
+        </pre>
+    </div>
+    <h2 style="color: #28B463;">Content URI</h2>
+    <div class="paragraph">
+        <p>A content URI is a URI that identifies data in a provider.
+            Content URIs include the symbolic name of the entire provider (its authority) and a name that points to a table (a path).</p>
+        <p>For ex, content://user_dictionary/words, where the user_dictionary string is the provider's authority, and the words string is the table's path.
+            The string content:// (the scheme) is always present, and identifies this as a content URI.</p>
+    </div>
+</body>
+</html>

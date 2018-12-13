@@ -1,0 +1,72 @@
+    .paragraph{
+        font-size:1.21875em;
+        line-height:1.6;
+        color:#7a2518;
+        font-weight:400;
+        margin-top:0;
+        margin-bottom:.25em;
+
+    }
+    .imageblock{
+        margin:.25em 0 1.25em .625em;
+        text-rendering:optimizeLegibility;
+        text-align:left;
+        font-family:"Noto Serif","DejaVu Serif",serif;
+        font-size:1rem;
+        font-style:italic;
+        border-width:6px;
+        overflow: scroll;
+        padding: .125em;
+    }
+    .ulist{
+        text-rendering:optimizeLegibility;
+        text-align:left;
+        font-family:"Noto Serif","DejaVu Serif",serif;
+        font-size:1.2em;
+        line-height:1.6;
+        font-weight:400;
+
+    }
+.listingblock{
+    line-height:1.45;
+    color:#7a2518;
+    font-weight:400;
+    margin-top:0;
+    margin-bottom:1.25em;
+    text-rendering:optimizeLegibility;
+    text-align:left;
+    font-family:"Noto Serif","DejaVu Serif",serif;
+    font-size:1rem;
+    font-style:italic;
+    overflow: scroll;
+    background:#f7f7f8;
+    margin-left:-11em;
+}
+/*.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}*/
+.CodeRay .attribute-name {
+    color: navy;
+}
+.CodeRay .tag {
+    color: teal;
+}
+.CodeRay .string {
+    color: #d20;
+}
+.CodeRay .string .delimiter {
+    color: #d14;
+}
+.CodeRay .string .content {
+    color: #d14;
+}
+
+pre.prettyprint {
+    border: 1px solid #d6d6d6;
+    background-color: #eee;
+    width: 98%;
+    border-radius: 0;
+    margin-bottom: 10px;
+    font-size: 13px;
+    overflow: auto;
+}

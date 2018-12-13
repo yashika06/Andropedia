@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Spinner</h2>
+    <div class="paragraph">
+        <p>Spinners provide a quick way to select one value from a set. In the default state, a spinner shows its currently selected value.
+            Touching the spinner displays a dropdown menu with all other available values, from which the user can select a new one.</p>
+        <p>We can add a spinner to your layout with the Spinner object. We should usually do so in our XML layout with a &lt;Spinner&gt; element.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" /&gt;
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>To populate the spinner with a list of choices, we then need to specify a SpinnerAdapter in our Activity or Fragment source code.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
+                            String[] weeks = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"  };
+                            protected void onCreate(Bundle savedInstanceState) {
+                                super.onCreate(savedInstanceState);
+                                setContentView(R.layout.activity_main);
+
+                                Spinner spinner = (Spinner) findViewById(R.id.spinner);
+                                spinner.setOnItemSelectedListener(this);
+
+                                //Creating the ArrayAdapter instance having the country list
+                                ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(this,weeks, android.R.layout.simple_spinner_item);
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                //Setting the ArrayAdapter data on the Spinner
+                                spinner.setAdapter(adapter);
+                            }
+                            @Override
+                            public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
+                                Toast.makeText(getApplicationContext(),weeks[position] ,Toast.LENGTH_LONG).show();
+                            }
+                            @Override
+                            public void onNothingSelected(AdapterView<?> arg0) {
+                                // TODO Auto-generated method stub
+                            }
+                        }
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>
+            The <b>createFromResource()</b> method allows you to create an ArrayAdapter from the string array.
+            The third argument for this method is a layout resource that defines how the selected choice appears in the spinner control.
+            The <b>simple_spinner_item</b> layout is provided by the platform and is the default
+            layout you should use unless you'd like to define your own layout for the spinner's appearance.
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Intents</h2>
+    <div class="paragraph">
+       <p>An intent is an abstract description of an operation to be performed. An Intent provides a facility for performing late runtime binding between the code in different applications. Although intents facilitate communication between components in several ways, there are three fundamental use cases: </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                <b>Starting an activity: </b><br>
+                We can start a new instance of an Activity by passing an Intent to startActivity(). The Intent describes the activity to start and carries any necessary data.
+                <div class="listingblock">
+                    <pre>
+                        Intent intent = new Intent(MainActivity.this, NextActivity.class);
+                        intent.putExtra(Intent.EXTRA_TEXT,"hello");
+                        startActivity(intent);
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Starting a service: </b><br>
+                We can start a service to perform a one-time operation (such as downloading a file) by passing an Intent to startService(). The Intent describes the service to start and carries any necessary data.
+                <div class="listingblock">
+                    <pre>
+                        Intent intent = new Intent(MainActivity.this, HelloService.class);
+                        startService(intent);
+                    </pre>
+                </div>
+                If the service is designed with a client-server interface, we can bind to the service from another component by passing an Intent to bindService().
+            </li>
+            <li>
+                <b>Delivering a broadcast: </b>
+                A broadcast is a message that any app can receive. The system delivers various broadcasts for system events,
+                such as when the system boots up or the device starts charging.
+                We can deliver a broadcast to other apps by passing an Intent to sendBroadcast() or sendOrderedBroadcast().
+                <div class="listingblock">
+                    <pre>
+                        Intent intent = new Intent();
+                        intent.setAction("com.android.Broadcast");
+                        intent.putExtra("extra", phoneNo);
+                        sendBroadcast(intent);
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_sub_tutorial"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.yashika.andropedia.Activity.SubTutorialActivity">
+    <com.github.florent37.materialviewpager.MaterialViewPager
+        android:id="@+id/materialViewPager_subtutorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:viewpager_logo="@layout/header_subtutorial"
+        app:viewpager_pagerTitleStrip="@layout/material_view_pager_pagertitlestrip_newstand"
+        app:viewpager_logoMarginTop="20dp"
+        app:viewpager_color="@color/colorPrimary"
+        app:viewpager_headerHeight="200dp"
+        app:viewpager_headerAlpha="1.0"
+        app:viewpager_imageHeaderDarkLayerAlpha="0.2"
+        app:viewpager_hideLogoWithFade="true"
+        app:viewpager_hideToolbarAndTitle="true"
+        app:viewpager_enableToolbarElevation="true"
+        app:viewpager_parallaxHeaderFactor="1.5"
+        app:viewpager_displayToolbarWhenSwipe="false"
+        app:viewpager_transparentToolbar="false"
+        app:viewpager_animatedHeaderImage="true"
+        >
+    </com.github.florent37.materialviewpager.MaterialViewPager>
+
+</RelativeLayout>

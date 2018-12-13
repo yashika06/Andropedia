@@ -1,0 +1,44 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">CheckBox</h2>
+    <div class="paragraph">
+        <p>A checkbox is a specific type of two-states button that can be either checked or unchecked.
+            Android CheckBox class is the subclass of CompoundButton class.
+            The android.widget.CheckBox class provides the facility of creating the CheckBoxes.</p>
+    </div>
+    <div class="listingblock">
+                <pre >
+                       &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                             android:orientation="vertical"
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"&gt;
+                            &lt;CheckBox android:id="@+id/checkbox"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="@string/text"/&gt;
+                        &lt;/LinearLayout&gt;
+                    </pre>
+    </div>
+
+    <div class="paragraph">
+        <p>A example usage of a checkbox inside your activity would be the following:</p>
+    </div>
+    <div class="listingblock">
+                <pre >
+                        public class MyActivity extends Activity {
+                             protected void onCreate(Bundle bundle) {
+                                 super.onCreate(bundle);
+                                 setContentView(R.layout.activity_main);
+                                 final CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox);
+                                 if (checkBox.isChecked()) {
+                                     checkBox.setChecked(false);
+                                 }
+                             }
+                        }
+                    </pre>
+    </div>
+</body>
+</html>

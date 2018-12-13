@@ -1,0 +1,42 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">ImageView</h2>
+    <div class="paragraph">
+        <p>The ImageView is a UI widget that can load and display images.
+            ImageView is also commonly used to apply tints to an image and handle image scaling.</p>
+    </div>
+    <div class="listingblock">
+        <pre >
+                        &lt;LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"&gt;
+                                 &lt;ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/image_draw"/&gt;
+                        &lt;/LinearLayout&gt;
+        </pre>
+    </div>
+    <h2 style="color: #28B463;">ImageView scaleType</h2>
+    <div class="paragraph">
+        <p>ImageView comes with different configuration options to support different scaleTypes. scaleType options are used for scaling the
+        bounds of the image to bounds of the view. Some scaleType configuration properties supported by ImageView are:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>CENTER</li>
+            <li>CENTER_CROP</li>
+            <li>CENTER_INSIDE</li>
+            <li>FIT_CENTER</li>
+            <li>FIT_END</li>
+            <li>FIT_START</li>
+            <li>FIT_XY</li>
+            <li>MATRIX</li>
+        </ul>
+    </div>
+</body>
+</html>

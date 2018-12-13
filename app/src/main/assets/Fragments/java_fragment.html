@@ -1,0 +1,70 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Creating a fragment using Java</h2>
+    <div class="paragraph">
+        <p>Various steps require to create a fragment using Java code are: </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Create a layout file that contain the appearance of fragment
+                <div class="listingblock">
+                    <pre>
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                    &lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context=".MyFragment"
+                        android:id="@+id/fragment"&gt;
+
+                       &lt;TextView android:id="@+id/text"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="This is a TextView" /&gt;
+                    &lt;/FrameLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create a class that extends Fragment
+                <div class="listingblock">
+                    <pre>
+                    public class MyFragment extends Fragment{
+                        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+                            return inflater.inflate(R.layout.fragment_my, container, false);
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create fragment container in activity layout file
+                <div class="listingblock">
+                    <pre>
+                    &lt;FrameLayout
+                                 android:id="@+id/fragment_container"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"/&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Attach fragment inside Activity
+                <div class="listingblock">
+                    <pre>
+                    MyFragment frag = new MyFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.add(R.id.fragment_container,frag);
+                    transaction.commit();
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

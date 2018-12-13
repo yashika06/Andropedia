@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Andropedia</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_reference">References</string>
+    <string name="nav_about_us">About Us</string>
+    <string name="nav_share">Share App</string>
+    <string name="nav_rate">Rate Us</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Android tutorial!</string>
+    <string name="slide_1_desc">The easiest way to learn android!</string>
+
+    <string name="slide_2_title">Interview Questions</string>
+    <string name="slide_2_desc">Commonly asked interview questions with answers!</string>
+
+    <string name="slide_3_title">Practise Quiz</string>
+    <string name="slide_3_desc">Practise quiz to test your skills!</string>
+
+</resources>

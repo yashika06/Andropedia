@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_about_us"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Developed By"
+        android:textSize="25dp"
+        android:textColor="#28B463"/>
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="40dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/image_about"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/decrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:layout_marginTop="25dp"
+        android:text="This app is developed by\nYashika Singhal"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="#28B463"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:textColor="#28B463"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/decrip"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/close_about_me_btn" />
+</RelativeLayout>

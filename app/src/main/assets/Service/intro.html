@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Introduction</h2>
+    <div class="paragraph">
+        <p>A Service is an application component that can perform long-running operations in the background,
+            and it does not provide a user interface. For example, a service can handle network transactions, play music, perform file I/O,
+            or interact with a content provider, all from the background.</p>
+        <p>There are three different types of services: </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li><b>Scheduled: </b>A service is scheduled when an API such as the JobScheduler, launches the service.</li>
+            <li><b>Started: </b>A service is started when an application component calls startService().
+                After it's started, a service can run in the background indefinitely, even if the component that started it is destroyed.</li>
+            <li><b>Bound: </b>A service is bound when an application component binds to it by calling bindService().
+                A bound service offers a client-server interface that allows components to interact with the service,
+                 send requests, receive results, and even do so across processes with interprocess communication (IPC). </li>
+        </ul>
+    </div>
+    <div class="paragraph">
+        <p>To create a service, we must create a subclass of Service or use one of its existing subclasses.
+            In our implementation, we must override some callback methods that handle key aspects of the service lifecycle</p>
+    </div>
+</body>
+</html>

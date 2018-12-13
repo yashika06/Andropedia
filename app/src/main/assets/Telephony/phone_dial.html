@@ -1,0 +1,57 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+</head>
+<body>
+<h2  style="color: #28B463;">Phone Dial</h2>
+<div class="paragraph">
+    <p>This example explains the method to dial a phone number on a button click. This uses Implicit Intents in which the dialer activity is launched on button click.</p>
+</div>
+<div class="ulist">
+    <ul>
+        <li>
+            <b>Add permission to Manifest file</b>
+            <div class="listingblock">
+                    <pre>
+                    &lt;uses-permission android:name="android.permission.CALL_PHONE" /&gt;
+                    </pre>
+            </div>
+        </li>
+        <li>
+            <b>Add a button in layout file</b>
+            <div class="listingblock">
+                    <pre>
+                    &lt;Button android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_text"
+                        android:onClick="btnClick"/&gt;
+                    </pre>
+            </div>
+        </li>
+        <li>
+            <b>Inside MainActivity insert the following code start phone call</b>
+            <div class="listingblock">
+                    <pre>
+                    public void btnClick(){
+                        Intent i = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:9999999999"));
+                        if(ActivityCompat.checkSelfPermisiion(this, Manifest.permission.CALL_PHONE) != PackageMangaer.PERMISSION_GRANTED){
+                            Toast.makeText(this, "Permission not granted",Toast.LENGTH_SHORT).show();
+                            requestPermission();
+                        }
+                        else{
+                            startActivity(intent);
+                        }
+                    }
+                    private void requestPermission(){
+                        ActivityCompat.requestPermission(this,new String[]{Manifest.permission.CALL_PHONE},1);
+                    }
+
+                    </pre>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

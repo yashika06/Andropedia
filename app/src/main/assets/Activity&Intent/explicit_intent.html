@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Explicit Intent</h2>
+    <div class="paragraph">
+        <p>An explicit intent is one that we use to launch a specific app component, such as a particular activity or service in our app.
+            Explicit Intents specify a component (via setComponent(ComponentName) or setClass(Context, Class)), which provides the exact class to be run.
+            We can also pass the information from one activity to another using explicit intent.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Intent i = new Intent(getApplicationContext(), NextActivity.class);
+                        i.putExtra("EXTRA_STRING", "Hello next Activity");
+                        startActivity(i);
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>In the above code snippet we are starting NextActivity and at the same time sending data using putExtra() method. To retrieve data in NextActivity following code is used:
+        </p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Intent intent = getIntent();
+                        String str = intent.getStringExtra("EXTRA_STRING");
+        </pre>
+    </div>
+</body>
+</html>

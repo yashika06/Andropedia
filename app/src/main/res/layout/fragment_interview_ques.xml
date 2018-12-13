@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="end"
+    tools:context="com.android.yashika.andropedia.Fragment.InterviewQuesFragment">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/tutorial_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/cardMarginVertical"
+        android:layout_marginLeft="@dimen/cardMarginHorizontal"
+        android:layout_marginRight="@dimen/cardMarginHorizontal"
+        android:layout_marginTop="170dp"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="0dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Commonly asked interview questions with answers. These questions will help you crack your interview."
+                android:textAlignment="center"
+                android:textSize="19dp"
+                android:textColor="@color/text_color"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/binary_laptop"
+                />
+            <Button
+                android:id="@+id/view_ques"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Questions"
+                android:background="@drawable/button_start"
+                android:padding="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"
+                android:textSize="17dp"
+                android:elevation="10dp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+        </ScrollView>
+
+
+    </android.support.v7.widget.CardView>
+</FrameLayout>

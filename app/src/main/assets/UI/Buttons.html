@@ -1,0 +1,95 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Buttons</h2>
+    <div class="paragraph">
+        <p>Android Button represents a push-button. The android.widget.Button is subclass of TextView class and CompoundButton is the subclass of Button class.
+            A button consists of text or an icon (or both text and an icon) that communicates what action occurs when the user touches it.</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                A button with text only, using <b>Button</b> class.
+                <div class="listingblock">
+                <pre >
+                   &lt;Button android:id="@+id/button"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/button_text" /&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                A button with icon only, using <b>ImageButton</b> class.
+                <div class="listingblock">
+                <pre >
+                   &lt;ImageButton android:id="@+id/image_button"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:src="@drawable/button_icon" /&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                A button with text and icon, using <b> Button</b> class with the <b>android:drawableLeft</b> attribute.
+                <div class="listingblock">
+                <pre >
+                   &lt;Button android:id="@+id/button"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/button_text"
+                    android:drawableLeft="@drawable/button_icon" /&gt;
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <h2 style="color: #28B463;">Buttons click events</h2>
+    <div class="paragraph">
+        <p>Click event occurs when a user click on a particular button. On button click some action should be performed which is defind in click event. There are two ways of </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li><b>Using onClick attribute</b><br>
+                Here's the layout with a button using android:onClick
+            <div class="listingblock">
+                <pre >
+                   &lt;Button android:id="@+id/button"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/button_text"
+                      android:drawableLeft="@drawable/button_icon"
+                      android:onClick="buttonClicked"/&gt;
+                    </pre>
+            </div>
+                Within the Activity that hosts this layout, following method handles the click event:
+                <div class="listingblock">
+                <pre >
+                   /** Called when the user touches the button */
+                    public void buttonClicked(View view) {
+                        // Do something in response to button click
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li><b>Using onClickListener</b><br>
+                To declare the event handler programmatically, create an View.OnClickListener object and assign it to the button
+                by calling setOnClickListener.
+
+                <div class="listingblock">
+                <pre >
+                   Button button = (Button) findViewById(R.id.button_send);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            // Do something in response to button click
+                        }
+                    });
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

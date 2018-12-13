@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Activity Lifecycle</h2>
+    <div class="paragraph">
+        <p>The Activity class provides a number of callbacks that allow the activity to know that a state has changed: that the system is creating, stopping, or resuming an activity, or destroying the process in which the activity resides.</p>
+        <p>An activity has essentially four states:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>If an activity is in the foreground of the screen (at the top of the stack), it is active or running.</li>
+            <li>If an activity has lost focus but is still visible (that is, a new non-full-sized or transparent activity has focus on top of your activity), it is paused. A paused activity is completely alive </li>
+            <li>If an activity is completely obscured by another activity, it is stopped. It still retains all state and member information, however, it is no longer visible to the user</li>
+            <li>If an activity is paused or stopped, the system can drop the activity from memory by either asking it to finish, or simply killing its process.</li>
+        </ul>
+    </div>
+    <div class="paragraph">
+        <p>The following diagram shows the important state paths of an Activity. </p>
+    </div>
+    <div class="imageblock">
+        <img src="file:///android_asset/images/activity_lifecycle.png" width="100%">
+    </div>
+    <h2 style="color: #28B463;">Callback Methods</h2>
+    <div class="ulist">
+        <ul>
+            <li>
+                <b>onCreate(): </b> This method is called when the activity is first created. This is where you should do all of your normal static set up: create views, bind data to lists, etc. This method also provides you with a Bundle containing the activity's previously frozen state.
+            </li>
+            <li>
+                <b>onStart(): </b> This method is called when the activity enters the Started state.
+                The onStart() method completes very quickly and the activity does not stay resident in the Started state. Once this callback finishes, the activity enters the Resumed state.
+            </li>
+            <li>
+                <b>onResume(): </b> This method is called when the activity enters the Resumed state and it comes to the foreground.
+                This is the state in which the app interacts with the user. The app stays in this state until something happens to take focus away from the app.
+                When an interruptive event occurs, the activity enters the Paused state.
+            </li>
+            <li>
+                <b>onPause(): </b> The system calls this method as the first indication that the user is leaving current activity.
+                We can use the onPause() method to release system resources, such as broadcast receivers, handles to sensors, etc.
+                Implementations of this method must be very quick because the next activity will not be resumed until this method returns.
+            </li>
+            <li>
+                <b>onStop(): </b> When current activity is no longer visible to the user, it has entered the Stopped state,
+                and the system invokes the onStop() callback. This may occur when a newly launched activity covers the entire screen.
+                In the onStop() method, the app should release almost all resources that aren't needed while the user is not using it.
+            </li>
+            <li>
+                <b>onDestroy(): </b> This method is called before the activity is destroyed.
+                The system may also call this method when an orientation change occurs, and then immediately call onCreate() to recreate the process in the new orientation.
+                The onDestroy() callback releases all resources that have not yet been released by earlier callbacks such as onStop().
+            </li>
+            <li>
+                <b>onRestart(): </b> This method is called when the activity restarts after stopping. This method is always followed by onStart().
+            </li>
+
+        </ul>
+    </div>
+</body>
+</html>

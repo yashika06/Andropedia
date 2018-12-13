@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Implicit Intent</h2>
+    <div class="paragraph">
+        <p>Implicit Intents does not specify a component; instead, they must
+            include enough information for the system to determine which of the available components is best to run for that intent.
+            This is handled by the process of Intent resolution, which maps an Intent to an Activity, BroadcastReceiver, or Service that can handle it.</p>
+        <p> For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.</p>
+        <p>An Intent object carries information that the Android system uses to determine which component to start, plus information that the recipient component uses in order to properly perform the action </p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_SEND);
+                        intent.putExtra(Intent.EXTRA_TEXT, message);
+                        intent.setType("text/plain");
+                        startActivity(intent);
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>When startActivity() is called, the system examines all of the installed apps to determine which ones can handle this kind of intent.
+            If there's only one app that can handle it, that app opens immediately and if multiple activities accept the intent, the system displays a dialog so the user can pick which app to use.</p>
+    </div>
+
+</body>
+</html>

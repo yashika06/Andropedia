@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<h2 style="color: #28B463;">RadioButton</h2>
+    <div class="paragraph">
+        <p>Radio buttons allow the user to select one option from a set. You should use radio buttons for optional sets that are mutually exclusive
+            if you think that the user needs to see all available options side-by-side.</p>
+    </div>
+    <div class="paragraph">
+        <p>
+            To create each radio button option, create a RadioButton in your layout. However, because radio buttons are mutually exclusive, you must group them together inside a RadioGroup.
+            By grouping them together, the system ensures that only one radio button can be selected at a time.
+        </p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                            &lt;RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"&gt;
+                                &lt;RadioButton android:id="@+id/radio_yes"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:text="@string/yes"
+                                     android:onClick="onRadioButtonClicked"/&gt;
+                                &lt;RadioButton android:id="@+id/radio_no"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:text="@string/no"
+                                     android:onClick="onRadioButtonClicked"/&gt;
+                             &lt;/RadioGroup&gt;
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>
+            Within the Activity that hosts this layout, the following method handles the click event for both radio buttons:
+        </p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        public void onRadioButtonClicked(View view) {
+                            boolean checked = ((RadioButton) view).isChecked();
+                            switch(view.getId()) {
+                                case R.id.radio_yes:
+                                    if (checked)
+                                        // Do something for yes
+                                    break;
+                                case R.id.radio_no:
+                                    if (checked)
+                                        // Do something for no
+                                    break;
+                            }
+                        }
+        </pre>
+    </div>
+
+
+</body>
+</html>

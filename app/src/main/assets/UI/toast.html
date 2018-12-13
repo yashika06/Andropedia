@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Toast</h2>
+    <div class="paragraph">
+        <p>A toast is a view containing a quick little message for the user. The toast class helps you create and show those.
+            When the view is shown to the user, appears as a floating view over the application.</p>
+        <p>The following code is used to display a toast:</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Toast.makeText(getApplicationContext(),"Hello Programmers",Toast.LENGTH_SHORT).show();
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>Here, getApplicationContext() method returns the instance of Context.</p>
+        <p>We can also set margins to the toast.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Toast toast=Toast.makeText(MainActivity.this,"Hello Programmers",Toast.LENGTH_SHORT);
+                        toast.setMargin(20,20);
+                        toast.show();
+        </pre>
+    </div>
+
+</body>
+</html>

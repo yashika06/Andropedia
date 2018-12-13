@@ -1,0 +1,69 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Shared Preferences</h2>
+    <div class="paragraph">
+        <p>Application shared preferences allows you to save and retrieve key, value pair data.
+            Application shared preferences can be fetched using getSharedPreferences() method.
+            We also need an editor to edit and save the changes in shared preferences.</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li><b>Initialization</b>
+                <div class="listingblock">
+                    <pre>
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+                    Editor editor = pref.edit();
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Storing Data</b>
+                <div class="listingblock">
+                    <pre>
+                    editor.putBoolean("key_name", true); // Storing boolean - true/false
+                    editor.putString("key_name", "string value"); // Storing string
+                    editor.putInt("key_name", "int value"); // Storing integer
+                    editor.putFloat("key_name", "float value"); // Storing float
+                    editor.putLong("key_name", "long value"); // Storing long
+
+                    editor.commit(); // commit changes
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Retrieving Data</b>
+                <div class="listingblock">
+                    <pre>
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+                    pref.getString("key_name", null); // getting String
+                    pref.getInt("key_name", null); // getting Integer
+                    pref.getFloat("key_name", null); // getting Float
+                    pref.getLong("key_name", null); // getting Long
+                    pref.getBoolean("key_name", null); // getting boolean
+                    </pre>
+                </div>
+            </li>
+            <li>
+                <b>Clearing Data</b>
+                <div class="listingblock">
+                    <pre>
+                    editor.remove("name"); // will delete key name
+                    editor.remove("email"); // will delete key email
+                    editor.commit();
+                    </pre>
+                </div>
+                To clear all the data from Shared Preferences
+                <div class="listingblock">
+                    <pre>
+                    editor.clear();
+                    editor.commit();
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

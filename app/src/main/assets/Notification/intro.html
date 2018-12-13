@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+    <h2 style="color: #28B463;">Android Notifications</h2>
+    <div class="paragraph">
+        <p>A notification is a message you can display to the user outside of your application's normal UI.
+            When you tell the system to issue a notification, it first appears as an icon in the notification area. </p>
+        <p>We specify the UI information and actions for a notification in a NotificationCompat.Builder object. To create the
+            notification itself, we call NotificationCompat.Builder.build(), which returns a Notification object containing our
+            specifications. To issue the notification, we pass the Notification object to the system by calling NotificationManager.
+            notify().</p>
+    </div>
+    <h2 style="color: #28B463;">Creating a Notification Builder</h2>
+    <div class="paragraph">
+        <p>When creating a notification, specify the UI content and actions with a NotificationCompat.Builder object.
+            At bare minimum, a Builder object must include the following:</p>
+        <div class="ulist">
+            <ul>
+                <li>A small icon, set by setSmallIcon()</li>
+                <li>A title, set by setContentTitle()</li>
+                <li>Detail text, set by setContentText()</li>
+            </ul>
+        </div>
+        <div class="listingblock">
+            <pre>
+                        NotificationCompat.Builder mBuilder =
+                            new NotificationCompat.Builder(this)
+                            .setSmallIcon(R.drawable.notification_icon)
+                            .setContentTitle("My notification")
+                            .setContentText("Hello World!");
+            </pre>
+        </div>
+    </div>
+    <h2 style="color: #28B463;">Adding action to Notification</h2>
+    <div class="paragraph">
+        <p>An action allows users to go directly from the notification to an Activity in your application, where they can look at one or more events or do further work.
+            We define a notification action using a PendingIntent. We add the PendingIntent by calling setContentIntent() method.</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        Intent notificationIntent = new Intent(this, MainActivity.class);
+                        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        builder.setContentIntent(contentIntent);
+        </pre>
+    </div>
+    <h2 style="color: #28B463;">Assigning priorities to Notification</h2>
+    <div class="paragraph">
+        <p>We can assign priority levels to the notifications by builder.setpriority(), passing one of the NotificationCompat priority contants.</p>
+        <p>There are five priority levels as below:</p>
+        <div class="ulist">
+            <ul>
+                <li>PRIORITY_MAX = 2</li>
+                <li>PRIORITY_HIGH = 1</li>
+                <li>PRIORITY_DEFAULT = 0</li>
+                <li>PRIORITY_LOW = -1</li>
+                <li>PRIORITY_MIN = -2</li>
+            </ul>
+        </div>
+        <p>Default priority of notification is PRIORITY_DEFAULT</p>
+        <div class="listingblock">
+            <pre>
+                        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+                        mBuilder.setPriority(Notification.PRIORITY_MAX);
+            </pre>
+        </div>
+    </div>
+</html>

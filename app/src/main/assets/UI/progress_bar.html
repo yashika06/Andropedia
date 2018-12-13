@@ -1,0 +1,54 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">ProgressBar</h2>
+    <div class="paragraph">
+        <p>ProgressBar is a user interface element that indicates the progress of an operation. Progress bar supports two modes to represent progress: determinate, and indeterminate.</p>
+    </div>
+    <h2 style="color: #28B463;">Indeterminate Progress</h2>
+    <div class="paragraph">
+        <p>Use indeterminate mode for the progress bar when you do not know how long an operation will take.
+            Indeterminate mode is the default for progress bar and shows a cyclic animation without a specific amount of progress indicated. The following code snippet shows an indeterminate progress bar:</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;ProgressBar
+                              android:id="@+id/indeterminateBar"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              /&gt;
+        </pre>
+    </div>
+    <h2 style="color: #28B463;">Determinate Progress</h2>
+    <div class="paragraph">
+        <p>Use determinate mode for the progress bar when you want to show that a specific quantity of progress has occurred. The following code snippet shows an determinate progress bar:</p>
+    </div>
+    <div class="listingblock">
+        <pre>
+                        &lt;ProgressBar
+                              android:id="@+id/determinateBar"
+                              style="@android:style/Widget.ProgressBar.Horizontal"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:progress="25"/&gt;
+        </pre>
+    </div>
+    <div class="paragraph">
+        <p>Other progress bar styles provided by the system include:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>Widget.ProgressBar.Horizontal</li>
+            <li>Widget.ProgressBar.Small</li>
+            <li>Widget.ProgressBar.Large</li>
+            <li>Widget.ProgressBar.Inverse</li>
+            <li>Widget.ProgressBar.Small.Inverse</li>
+            <li>Widget.ProgressBar.Large.Inverse</li>
+
+        </ul>
+    </div>
+
+</body>
+</html>

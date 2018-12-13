@@ -1,0 +1,69 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">List View</h2>
+    <div class="paragraph">
+        <p> ListView is a view group that displays a list of scrollable items.
+            The list items are automatically inserted to the list using an Adapter that pulls content from a source and converts each item result into a view that's placed into the list.
+            Android provides the ListView and the ExpandableListView classes which are capable of displaying a scrollable list of items.</p>
+        <p>
+            An adapter manages the data model and adapts it to the individual entries in the widget. An adapter extends the BaseAdapter class.
+            Following example illustrate the steps to create a listview with text only:
+        </p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Add ListView in activity layout file
+                <div class="listingblock">
+                    <pre>
+                    &lt;ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:id="@+id/listview"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" /&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create a layout file (listview_items) containing a TextView
+                <div class="listingblock">
+                    <pre>
+                    &lt;TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:id="@+id/label"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:textSize="16dip" &gt;
+                    &lt;/TextView&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Add an adapter to listview
+                <div class="listingblock">
+                    <pre>
+                    public class MainActivity extends Activity{
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.activity_main);
+                            final ListView listview = (ListView) findViewById(R.id.listview);
+                            String[] weeks = new String[] { "Mon", "Tue" , "Wed", "Thu", "Fri", "Sat", "Sun"};
+                            ArrayAdapter adapter = new ArrayAdapter&lt;String&gt;(this,R.layout.listview_items, weeks);
+                            listview.setAdapter(adapter);
+                            listView.setOnItemClickListener(new OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Toast.makeText(getApplicationContext(),"Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

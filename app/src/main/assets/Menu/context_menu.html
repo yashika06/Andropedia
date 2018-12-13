@@ -1,0 +1,77 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">Context Menu</h2>
+    <div class="paragraph">
+        <p>A context menu is a floating menu that appears when the user performs a long-click on an element.
+            It provides actions that affect the selected content or context frame.</p>
+        <p>There are two ways to provide contextual actions:</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li><b>In a floating context menu</b>
+                A menu appears as a floating list of menu items when the user performs a long-click on a view that declares support for a context menu.
+            </li>
+            <li>
+                <b>In the contextual action mode</b>
+                This mode is a system implementation of ActionMode that displays a contextual action bar at the top of the screen with action items that affect the selected item
+            </li>
+        </ul>
+    </div>
+    <h2 style="color: #28B463;">Creating floating context menu</h2>
+    <div class="ulist">
+        <p>To provide a floating context menu following steps should be followed: </p>
+        <ul>
+            <li>Register the View to which the context menu should be associated by calling registerForContextMenu() and pass it the View.
+                <div class="listingblock">
+                    <pre>
+                    protected void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_main);
+                        ListView listView=(ListView)findViewById(R.id.listView);
+                        ....
+                        // Register the ListView  for Context menu
+                        registerForContextMenu(listView);
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>Implement the onCreateContextMenu() method in your Activity or Fragment.
+                <div class="listingblock">
+                    <pre>
+                    @Override
+                    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+                        super.onCreateContextMenu(menu, v, menuInfo);
+                        MenuInflater inflater = getMenuInflater();
+                        inflater.inflate(R.menu.context_menu, menu);
+                    }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                When the user selects a menu item, the system calls onContextItemSelected() method so we can perform the appropriate action.
+                <div class="listingblock">
+                    <pre>
+                    @Override
+                    public boolean onContextItemSelected(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.edit:
+                                //Code here
+                                return true;
+                            case R.id.delete:
+                                //Code here
+                                return true;
+                            default:
+                                return super.onContextItemSelected(item);
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

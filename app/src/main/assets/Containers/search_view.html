@@ -1,0 +1,133 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <h2 style="color: #28B463;">SearchView</h2>
+    <div class="paragraph">
+        <p>SearchView widget provide search user interface where users can enter a search query and then submit a request to search provider.
+            It shows a list of query suggestions or results if available and allow the users to pick a suggestion or result to launch into.</p>
+        <p>In the  below implementation we created a SearchView and ListView from which the search is to be performed.</p>
+    </div>
+    <div class="ulist">
+        <ul>
+            <li>
+                Open an activity_main.xml file and add the code for displaying a SearchView and ListView by using its different attributes.
+                <div class="listingblock">
+                    <pre>
+                    &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"&gt;
+                        &lt;SearchView
+                            android:id="@+id/search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:iconifiedByDefault="false"
+                            android:queryHint="Search View";&gt;
+                        &lt;ListView
+                            android:id="@+id/listview"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/search" /&gt;
+                    &lt;/RelativeLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create new a new layout Activity named list_view_items.xml.
+                <div class="listingblock">
+                    <pre>
+                    &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"&gt;
+                        &lt;TextView
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/&gt;
+                    &lt;/RelativeLayout&gt;
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Create ListViewAdapter.java and add following code.
+                <div class="listingblock">
+                    <pre>
+                    public class ListViewAdapter extends BaseAdapter {
+                        Context mContext;
+                        LayoutInflater inflater;
+                        ArrayList&lt;String&gt; dataList;
+                        private ArrayList&lt;String&gt; arraylist;
+                         public ListViewAdapter(Context context, ArrayList&lt;String&gt; dataList) {
+                            mContext = context;
+                            this.dataList = dataList;
+                            inflater = LayoutInflater.from(mContext);
+                            this.arraylist = new ArrayList&lt;String&gt;();
+                            this.arraylist.addAll(dataList);
+                        }
+                        @Override
+                        public int getCount() {
+                            return dataList.size();
+                        }
+                        @Override
+                        public long getItemId(int position) {
+                            return position;
+                        }
+                        public View getView(final int position, View view, ViewGroup parent) {
+                            view = inflater.inflate(R.layout.listview_item, null);
+                            TextView name = (TextView) view.findViewById(R.id.name);
+                            name.setText(dataList.get(position));
+                            return view;
+                        }
+                        public void filter(String charText) {
+                            charText = charText.toLowerCase(Locale.getDefault());
+                            dataList.clear();
+                            if (charText.length() == 0) {
+                                dataList.addAll(arraylist);
+                            } else {
+                                for (String wp : arraylist) {
+                                    if (wp.toLowerCase(Locale.getDefault()).contains(charText)) {
+                                        dataList.add(wp);
+                                    }
+                                }
+                            }
+                            notifyDataSetChanged();
+                        }
+                    </pre>
+                </div>
+            </li>
+            <li>
+                Open MainActivity.java and add the code to initiate SearchView and ListView.
+                <div class="listingblock">
+                    <pre>
+                    public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+                        ListView list;
+                        ListViewAdapter adapter;
+                        SearchView editsearch;
+                        ArrayList&lt;String&gt; datalist = new ArrayList<>(Arrays.asList("Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"));
+                         @Override
+                        public void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            setContentView(R.layout.activity_main);
+                            adapter = new ListViewAdapter(this, datalist);
+                            list.setAdapter(adapter);
+                            editsearch = (SearchView) findViewById(R.id.search);
+                            editsearch.setOnQueryTextListener(this);
+                        }
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            return false;
+                        }
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            adapter.filter(newText);
+                            return true;
+                        }
+                    }
+                    </pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
